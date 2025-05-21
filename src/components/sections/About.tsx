@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FileCode, Layout, Zap } from 'lucide-react';
 import ScrollingText from '../ui/TextOpacity';
 
 const About: React.FC = () => {
@@ -16,18 +15,21 @@ const About: React.FC = () => {
 
   const services = [
     {
-      icon: <FileCode size={24} />,
+      icon: '01',
       title: "Web Development",
+      image: 'https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       description: "Building responsive, accessible, and performant websites using modern technologies."
     },
     {
-      icon: <Layout size={24} />,
+      icon: '02',
       title: "UI/UX Design",
+      image: 'https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       description: "Creating intuitive and beautiful user interfaces with focus on user experience."
     },
     {
-      icon: <Zap size={24} />,
+      icon: '03',
       title: "Performance Optimization",
+      image: 'https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       description: "Optimizing web applications for speed, SEO, and accessibility."
     },
     // {
@@ -87,71 +89,35 @@ const About: React.FC = () => {
             a deep understanding of user needs." />
         </div>
         
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <motion.div
-            className="flex flex-col justify-center"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="heading-3 mb-6">My Journey</h3>
-            <p className="paragraph text-neutral-400 mb-4">
-              My journey began with a curiosity about how websites work. This curiosity evolved into a 
-              passion for creating seamless user experiences that marry form and function.
-            </p>
-            <p className="paragraph text-neutral-400 mb-6">
-              With a background in both design and development, I bridge the gap between aesthetics and 
-              technical implementation, ensuring that both aspects receive equal attention in my projects.
-            </p>
-            <ul className="space-y-2 text-neutral-400">
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <span>BSc in Computer Science, Stanford University</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <span>Senior Front-end Developer at TechCorp</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <span>Freelance UI/UX Designer for various startups</span>
-              </li>
-            </ul>
-          </motion.div>
-          
-          <motion.div
-            className="relative aspect-[4/3] rounded-2xl overflow-hidden"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <img 
-              src="https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-              alt="John Doe working on a computer" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-          </motion.div>
-        </div> */}
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="flex flex-col gap-6 lg:gap-0 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="card flex flex-col items-center justify-center p-6"
+              className={`flex flex-col lg:flex-row items-center justify-between max-w-6xl p-6 group ${index !== services.length - 1 ? 'border-b border-neutral-200' : ''} `}
               custom={index}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
               variants={cardVariants}
             >
-              <div className="p-3 mb-4 rounded-lg bg-primary/10 w-fit text-primary">
-                {service.icon}
+              <div className="p-3 rounded-lg w-fit text-xl font-bold flex gap-4 relative">
+                <div className="relative w-12 h-12 overflow-visible">
+                  <div className="absolute -left-8 -top-14 w-64 opacity-0 group-hover:opacity-100 scale-50 transition-all duration-500 transform -translate-x-10 group-hover:translate-x-0 group-hover:scale-100 group-hover:-rotate-12">
+                    <img 
+                      src={service.image} 
+                      className="w-full h-full object-cover rounded-lg shadow-lg" 
+                      alt={service.title}
+                      width={500}
+                      height={500}
+                    />
+                  </div>
+                </div>
+                <h4 className="text-xl font-semibold mb-2 w-full transform transition-transform duration-500 group-hover:translate-x-44">
+                  {service.icon} {service.title}
+                </h4>
               </div>
-              <h4 className="text-xl font-semibold mb-2">{service.title}</h4>
-              <p className="text-neutral-400 text-center">{service.description}</p>
+              <p className="text-neutral-400 text-left w-full max-w-md">{service.description}</p>
             </motion.div>
           ))}
         </div>

@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold gradient-text mb-4">John Doe</h3>
+            <h3 className="text-xl font-bold gradient-text mb-4">Harsh Shukla</h3>
             <p className="mb-4 text-neutral-400 max-w-md">
               A passionate front-end developer crafting beautiful and functional digital experiences.
             </p>
